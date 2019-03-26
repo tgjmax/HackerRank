@@ -1,0 +1,20 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+int main(){
+    long N,num,sum_3,sum_5,sum_15=0;
+    scanf("%ld",&N);
+    for(int i=0;i<N;i++){
+        scanf("%ld",&num);
+        sum_3=(num-1)/3;
+        sum_5=(num-1)/5;
+        sum_15=(num-1)/15;
+        printf("%ld\n",(3*(sum_3*(sum_3+1)/2)+5*(sum_5*(sum_5+1)/2)-15*(sum_15*(sum_15+1)/2)));
+    }
+    return 0;
+}

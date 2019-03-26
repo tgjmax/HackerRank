@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int checkPali(int n){
+    int temp = n,reverse=0;
+
+    while (temp != 0){
+        reverse *= 10;
+        reverse += temp%10;
+        temp /= 10;
+    }
+    return (reverse == n) ? 1 : 0;
+}
+
+int max(int a, int b){
+    return (a>b) ? a : b;    
+}
+
+int main() {
+    int T; 
+    scanf("%d",&T);
+    while(T--){
+        int N;
+        scanf("%d",&N);
+        int mX =0;
+        for(int i=100;i<1000;i++){
+            for(int j=(100000/i)+1;j<1000;j++){
+                if(i*j < N && checkPali(i*j))
+                    mX = max(mX, i*j);
+            }
+        }
+       printf("%d\n",mX);
+    }
+    return 0;
+}

@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <math.h>
+
+typedef unsigned long long ull;
+
+ull max(ull a, ull b){
+    return (a>b) ? a : b;
+}
+    
+    
+ull primeFactors(ull n){
+    ull m=0;
+    while (n%2 == 0)
+        n = n/2;
+    
+    for (int i = 3; i <= sqrt(n); i = i+2){
+        while (n%i == 0){
+            m = max(m,i);
+            n = n/i;
+        }
+    }
+    if (n > 2)
+        m = max(m,n);
+    return m;
+}
+
+int main(){
+    int T;
+    scanf("%d",&T);
+    while(T--){
+        ull N;
+        scanf("%llu",&N);
+        printf("%llu\n",primeFactors(N));
+    }
+    return 0;
+}

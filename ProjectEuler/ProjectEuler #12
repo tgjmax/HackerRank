@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+typedef unsigned long long ull;
+
+int n_divisors(ull n){
+    int prod=1,count=0;
+    
+    while (n%2 == 0){
+        n = n/2;
+        count++;
+    }
+    prod*=(count+1);
+    
+    for (int i = 3; i <= sqrt(n); i = i+2){
+        count=0;
+        while (n%i == 0){
+            n = n/i;
+            count++;
+        }
+        prod*=(count+1);
+    }
+    if (n > 2){
+        prod*=2;
+    }
+    return prod;
+}
+
+ull triangle(int div){
+    int n=1,m=1;
+
+    while(n_divisors(n)<=div){
+        m++;
+        n+=m;    
+    }
+    return n;
+}
+
+int main() {
+    int t,div;
+    scanf("%d",&t);
+        
+    for(int i=0;i<t;i++){
+        scanf("%d",&div);
+        printf("%lld\n",triangle(div));
+    }       
+    return 0;
+}
+

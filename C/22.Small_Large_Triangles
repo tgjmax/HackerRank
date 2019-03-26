@@ -1,0 +1,16 @@
+#include<stdio.h>
+
+int relative_area(triangle *tri){
+    double p=(tri->a+tri->b+tri->c)/2.0;
+    return (p * (p - tri->a) * (p - tri->b) * (p - tri->c));
+}
+
+int relative_area_compare(const void *a,const void *b){
+  return relative_area((triangle *) a) - relative_area((triangle *) b);
+}
+
+void sort_by_area(triangle* tr, int n) {
+	qsort(tr, n, sizeof(*tr),relative_area_compare);
+}
+
+

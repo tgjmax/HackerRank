@@ -1,0 +1,37 @@
+#include<stdio.h>
+
+int sum(int count,...) {
+    int total;
+    va_list num;
+    va_start(num, count);
+    for(int i=0;i<count;i++)
+        total+=va_arg(num, int);
+    va_end(num);
+    return total;
+;}
+
+int min(int count,...) {
+    int temp,min = MAX_ELEMENT;
+    va_list num;
+    va_start(num, count);
+    for (int i = 0; i < count; i++){
+        temp=va_arg(num, int);
+        min=min>temp?temp:min;
+    }
+    va_end(num);
+    return min;
+}
+
+int max(int count,...) {
+    int temp, max = MIN_ELEMENT;
+    va_list num;
+    va_start(num, count);
+    for (int i = 0; i < count; i++) {
+        temp = va_arg(num, int);
+        max = max < temp ? temp : max;
+    }
+    va_end(num);
+    return max;
+}
+
+

@@ -1,0 +1,27 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+long long max(long long a,long long b){
+    return (a>b) ? a : b;
+}
+int main(){
+    int t; 
+    scanf("%d",&t);
+    for(int i = 0; i < t; i++){
+        long long n,b,c,prod=-1;
+        scanf("%lld",&n);
+        for(long long a=1;a<(n/3);a++){
+            b=(n*n-2*n*a)/(2*n-2*a);
+            c=n-a-b;
+            if(a*a+b*b==c*c && b>0 && c>0)
+                prod=max(prod,a*b*c);
+        }
+        printf("%lld\n",prod);
+    }
+    return 0;
+}

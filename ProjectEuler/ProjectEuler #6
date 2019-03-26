@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(){
+    int T;
+    long int N;
+    scanf("%d",&T);
+    while(T--){
+        scanf("%ld",&N);
+        long int sq_sum = (N*(N+1))/2;
+        sq_sum = sq_sum*sq_sum;
+        long int sum_sq = (N * (N + 1) * (2*N + 1)) / 6;
+        
+        printf("%ld\n",sq_sum-sum_sq);
+    }
+    return 0;
+}

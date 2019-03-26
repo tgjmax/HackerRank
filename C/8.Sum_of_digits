@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+	
+    int n,sum=0,temp;
+    scanf("%d", &n);
+    if(n < 10000 || n > 99999){
+        printf("Given value is out of bound (10000 - 99999)");
+        exit(0);
+        }
+    temp=n;
+    while(temp != 0){
+        sum = sum + (temp % 10);
+        temp = temp / 10;
+    }
+    printf("%d", sum);
+    return 0;
+}

@@ -1,0 +1,37 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+int n,k;
+
+int calc(char* num, int index){
+    int res=1;
+    for(int i=index;i<index+k;i++)    
+        res*=(num[i]-48);
+    return res;
+}
+
+int max(int a, int b){
+    return (a>b) ? a : b;
+}
+
+int main(){
+    int t; 
+    scanf("%d",&t);
+    
+    for(int a0 = 0; a0 < t; a0++){
+        int prod=0; 
+        scanf("%d %d",&n,&k);
+        
+        char* num = (char *)malloc(512000 * sizeof(char));
+        scanf("%s",num);
+        for(int i=0;i<n-k;i++)
+            prod=max(prod,calc(num,i));
+        printf("%d\n",prod);
+    }
+    return 0;
+}

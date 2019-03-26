@@ -1,0 +1,44 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+#define MAX_SIZE 1000001
+
+bool prime[MAX_SIZE]; 
+long long sum[MAX_SIZE];
+
+void primes_N(){ 
+    memset(prime, true, sizeof(prime)); 
+    int i,k,j;
+    prime[0]=prime[1]=false;
+    
+    for(i=2; i*i<MAX_SIZE; i++){ 
+        if (prime[i] == true){
+           for (k=i*2; k<MAX_SIZE; k += i){
+               prime[k] = false;
+             }
+        }
+    }   
+    long long sum_P=0;
+    for(int i=2;i<MAX_SIZE;i++){
+        if(prime[i])
+            sum_P+=i;
+        sum[i]=sum_P;
+    }
+} 
+
+
+int main(){
+    int t,n; 
+    primes_N();
+    scanf("%d",&t);
+    
+    for(int a0 = 0; a0 < t; a0++){
+        scanf("%d",&n);
+        printf("%lld\n",sum[n]);
+    }
+    return 0;
+}

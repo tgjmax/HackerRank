@@ -1,0 +1,40 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+int g[20][20];
+
+int max(int a, int b){
+    return (a>b) ? a : b;
+}
+
+int compute(int r, int c){
+    int m=0;
+    if(c+3 < 20)
+        m = max(m,g[r][c]*g[r][c+1]*g[r][c+2]*g[r][c+3]);
+    if(r+3 < 20)
+        m = max(m,g[r][c]*g[r+1][c]*g[r+2][c]*g[r+3][c]);
+    if(r+3 < 20 && c+3 < 20)
+        m = max(m,g[r][c]*g[r+1][c+1]*g[r+2][c+2]*g[r+3][c+3]);
+    if(r+3 < 20 && c-3 >=0)
+        m = max(m,g[r][c]*g[r+1][c-1]*g[r+2][c-2]*g[r+3][c-3]);
+    
+    return m;
+}
+
+int main(){
+    for(int row = 0; row < 20; row++)
+    	for(int col = 0; col < 20; col++)
+    		scanf("%d",&g[row][col]);
+    
+    int mX = 0;
+    for(int row = 0; row < 20; row++)
+        for(int col = 0; col < 20; col++)
+            mX = max(mX,compute(row,col));
+    printf("%d\n",mX);
+    return 0;
+}
